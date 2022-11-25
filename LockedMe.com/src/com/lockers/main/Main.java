@@ -1,19 +1,25 @@
 package com.lockers.main;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import com.lockers.service.Service;
 
 public class Main {
-    
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
 
 	
-	public static void main(String[] args) 
+	public static void main(String[] args) throws IOException 
 	{
 		Service serv = new Service();
 		int choice;
 		int option;
-	   System.out.println("<---------Welcome to LockedMe.com-------->");
+	   System.out.println(ANSI_YELLOW+"<---------Welcome to LockedMe.com-------->");
 	   System.out.println("<-----Developed by Mohd Aasim Ansari----->");
 	   System.out.println("------------------------------------------");
 	   
@@ -23,7 +29,7 @@ public class Main {
 	   System.out.println("Option 1 -> Retreive files from current directory");
 	   System.out.println("Option 2 -> Add a file to the exsiting directory");
 	   System.out.println("Option 3 -> Search a file");
-       System.out.println("option 4 -> Exit");
+       System.out.println("option 4 -> Exit"+ANSI_RESET);
        Scanner sc = new Scanner(System.in);
        option = sc.nextInt();
        
@@ -53,7 +59,38 @@ public class Main {
                   }
           
           case 3: {
-  	              //To search a file in directory  
+        	  sc.nextLine();
+                System.out.println("Enter file name");
+                String fName = sc.nextLine();
+                System.out.println("Enter file Location");
+                String fLocatoin = sc.nextLine();
+                
+              
+                try {
+					BufferedReader br = serv.searchFile(fName, fLocatoin);
+					if(br!=null) {
+					 System.out.println(ANSI_GREEN+fName+".txt Found on the given path, below is file content"+ANSI_RESET);
+		  	         System.out.println("-------------------------------------");
+					 String st;
+				        // Condition holds true till
+				        // there is character in a string
+				        while ((st = br.readLine()) != null)
+				 
+				            // Print the string
+				            System.out.println(st);
+				        System.out.println("--------------------------------------");
+				    }
+					else
+					{
+						System.out.println(ANSI_RED+"File not found!"+ANSI_RESET);
+					}
+					
+                }
+			    catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+         break;
   	        
             }
        }
