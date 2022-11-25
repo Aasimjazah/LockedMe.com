@@ -1,13 +1,16 @@
 package com.lockers.service;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.io.File;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
-import com.lockers.File;
 
 public class Service {
 
@@ -16,8 +19,7 @@ public class Service {
 	public boolean addFile(String fileName,String fileLocation ,String fileData )
 	{
 		boolean status = false;
-		File f = new File(fileName, fileLocation, fileData);
-		map.put(fileName,f);
+	
 		try {
 			FileWriter fw = new FileWriter(fileLocation+"/"+fileName+".txt");
 			
@@ -42,11 +44,25 @@ public class Service {
         
 		return status;
 	}
-	public File searchFile()
+	public BufferedReader searchFile(String fName, String fLocation) throws FileNotFoundException
 	{
-		File f= null;
+		BufferedReader br =null;
 		
-		return f;
+		   File directoryPath = new File(fLocation);
+		      //List of all files and directories
+		      String contents[] = directoryPath.list();
+		      
+		     // System.out.println("List of files and directories in the specified directory:");
+		      for(int i=0; i<contents.length; i++) {
+		         if(contents[i].equalsIgnoreCase(fName+".txt"))
+		         {
+		        	 File file = new File(fLocation+"/"+fName+".txt");
+		        	  br = new BufferedReader(new FileReader(file));
+		        	 
+		         }
+		      }
+		
+		return br;
 		
 	}
 	
