@@ -3,6 +3,7 @@ package com.lockers.main;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import com.lockers.service.Service;
@@ -36,7 +37,13 @@ public class Main {
        switch(option)
        {
           case 1: {
-        	        //To get all files in specified directory   
+		        	  //To get all files in specified directory   
+			           List<String> files =serv.getAllFiles();
+			           
+			           
+			           System.out.println(files);
+			           
+			           break;
         	        
                   }
           // Case 3: to add the file in specified path
