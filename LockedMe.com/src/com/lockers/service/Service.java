@@ -40,10 +40,21 @@ public class Service {
 		return status;
 	}
 	
-	public boolean deleteFile()
+	public boolean deleteFile(String fName, String fLocation)
 	{
         boolean status = false;
-		
+        try  
+        {         
+        File f= new File(fLocation+"/"+fName+".txt");           //file to be delete  
+        if(f.delete())                      //returns Boolean value  
+        {  
+            status = true;  
+        }    
+        }  
+        catch(Exception e)  
+        {  
+           e.printStackTrace();  
+        }  
         
 		return status;
 	}
