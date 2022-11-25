@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+import java.io.File;
 
 import com.lockers.service.Service;
 
@@ -17,6 +18,11 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException 
 	{
+		 File file = new File("D://file handling");
+	      //Creating the directory
+	     file.mkdir();
+	     
+		
 		Service serv = new Service();
 		int choice;
 		int option;
