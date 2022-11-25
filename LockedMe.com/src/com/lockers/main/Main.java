@@ -25,12 +25,13 @@ public class Main {
 	   System.out.println("------------------------------------------");
 	   
 	   do {
-	   System.out.println("*Please choose any option below*");
+	   System.out.println(ANSI_YELLOW+"*Please choose any option below*");
 	   System.out.println("Default directory - D://file handling");
 	   System.out.println("Option 1 -> Retreive files from current directory");
 	   System.out.println("Option 2 -> Add a file to the exsiting directory");
 	   System.out.println("Option 3 -> Search a file");
-       System.out.println("option 4 -> Exit"+ANSI_RESET);
+	   System.out.println("Option 4 -> Delete a file");
+       System.out.println("option 5 -> Exit"+ANSI_RESET);
        Scanner sc = new Scanner(System.in);
        option = sc.nextInt();
        
@@ -75,31 +76,59 @@ public class Main {
               
                 try {
 					BufferedReader br = serv.searchFile(fName, fLocatoin);
-					if(br!=null) {
-					 System.out.println(ANSI_GREEN+fName+".txt Found on the given path, below is file content"+ANSI_RESET);
-		  	         System.out.println("-------------------------------------");
-					 String st;
-				        // Condition holds true till
-				        // there is character in a string
-				        while ((st = br.readLine()) != null)
-				 
-				            // Print the string
-				            System.out.println(st);
-				        System.out.println("--------------------------------------");
-				    }
-					else
-					{
-						System.out.println(ANSI_RED+"File not found!"+ANSI_RESET);
-					}
+						if(br!=null) {
+						 System.out.println(ANSI_GREEN+fName+".txt Found on the given path, below is file content"+ANSI_RESET);
+			  	         System.out.println("-------------------------------------");
+						 String st;
+					        // Condition holds true till
+					        // there is character in a string
+					        while ((st = br.readLine()) != null)
+					 
+					            // Print the string
+					            System.out.println(st);
+					        System.out.println("--------------------------------------");
+					    }
+						else
+						{
+							System.out.println(ANSI_RED+"File not found!"+ANSI_RESET);
+						}
 					
-                }
-			    catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-         break;
-  	        
+                	}
+				    	catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                	break;  
             }
+          
+          case 4: {
+        	  //To delete a file  
+        	  sc.nextLine();
+              System.out.println("Enter file name");
+              String fName = sc.nextLine();
+              System.out.println("Enter file Location");
+              String fLocatoin = sc.nextLine();
+              
+              if(serv.deleteFile(fName, fLocatoin))
+              {
+            	  System.out.println(ANSI_GREEN+"File deleted Successfully"+ANSI_RESET);
+              }
+              else
+              {
+            	  System.out.println("File not found");
+              }
+  	          
+ 	           
+ 	           break;
+          }
+          case 5: {
+        	  //To do exit
+  	          
+	           
+	           break;
+         }
+	        
+          
        }
        
        System.out.println("Do you want to continue? press 1 for Yes press 0 for No");
