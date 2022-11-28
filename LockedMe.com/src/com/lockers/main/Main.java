@@ -153,8 +153,6 @@ public class Main {
 
 	   System.out.println("Thanks! Have a nice day");
 
-	   
-	   System.out.println("Thanks! Have a nice day");
 
 	}
 
