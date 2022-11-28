@@ -14,6 +14,7 @@ public class Main {
 	public static final String ANSI_GREEN = "\u001B[32m";
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_YELLOW = "\u001B[33m";
+	public static final String CYAN = "\033[0;36m"; 
 
     static int exit =0;
 
@@ -32,7 +33,12 @@ public class Main {
 	   System.out.println("<-----Developed by Mohd Aasim Ansari----->");
 	   System.out.println("------------------------------------------");
 	   
-	   do {
+	   System.out.println("Below are the files exist in the default directory");
+	   List<String> files1 =serv.getAllFiles();
+       
+       System.out.println(CYAN+files1+ANSI_RESET);
+	   
+	  do {
 	   System.out.println(ANSI_YELLOW+"*Please choose any option below*");
 	   System.out.println("Default directory - D://file handling");
 	   System.out.println("Option 1 -> Retreive files from current directory");
@@ -137,6 +143,10 @@ public class Main {
 	           choice=0;
 	           break;
          }
+          default:{
+        	  System.out.println(ANSI_RED+"*Please enter correct choice*"+ANSI_RESET);
+        	  break;
+          }
 	        
           
        }
