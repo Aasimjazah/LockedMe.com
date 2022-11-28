@@ -19,6 +19,8 @@ public class Service {
 
 	Map<String,File> map = new HashMap<String,File>();
 	
+	
+     //Add file method
 	public boolean addFile(String fileName,String fileLocation ,String fileData )
 	{
 		boolean status = false;
@@ -43,6 +45,7 @@ public class Service {
 		return status;
 	}
 	
+	//File deletion method
 	public boolean deleteFile(String fName, String fLocation)
 	{
         boolean status = false;
@@ -61,6 +64,8 @@ public class Service {
         
 		return status;
 	}
+	
+	//File search method
 	public BufferedReader searchFile(String fName, String fLocation) throws FileNotFoundException
 	{
 		BufferedReader br =null;
@@ -83,6 +88,7 @@ public class Service {
 		
 	}
 	
+	//Get all files method
 	public List<String> getAllFiles()
 	{
 		List<String> files =new ArrayList<>();
