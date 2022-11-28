@@ -101,6 +101,7 @@ public class Main {
 							System.out.println(ANSI_RED+"File not found!"+ANSI_RESET);
 						}
 					
+						br.close();
                 	}
 				    	catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
