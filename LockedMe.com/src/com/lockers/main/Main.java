@@ -14,7 +14,9 @@ public class Main {
 	public static final String ANSI_GREEN = "\u001B[32m";
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_YELLOW = "\u001B[33m";
- 
+
+    static int exit =0;
+
 	
 	public static void main(String[] args) throws IOException 
 	{
@@ -24,7 +26,7 @@ public class Main {
 	     
 		
 		Service serv = new Service();
-		int choice;
+		int choice=0;
 		int option;
 	   System.out.println(ANSI_YELLOW+"<---------Welcome to LockedMe.com-------->");
 	   System.out.println("<-----Developed by Mohd Aasim Ansari----->");
@@ -130,21 +132,30 @@ public class Main {
           case 5: {
         	  
   	          
-	           
+	           exit=1;
+	           choice=0;
 	           break;
          }
 	        
           
        }
-       
-       
+
+       if(exit!=1)
+       {
+
        System.out.println("Do you want to continue? press 1 for Yes press 0 for No");
       
 	   
 	   choice = sc.nextInt();
 	   }
+	   }
 	   while(choice==1);
+
 	   System.out.println("Thanks! Have a nice day");
+
+	   
+	   System.out.println("Thanks! Have a nice day");
+
 	}
 
 }
