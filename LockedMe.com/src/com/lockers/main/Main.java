@@ -14,7 +14,7 @@ public class Main {
 	public static final String ANSI_GREEN = "\u001B[32m";
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_YELLOW = "\u001B[33m";
-
+ 
 	
 	public static void main(String[] args) throws IOException 
 	{
@@ -128,7 +128,7 @@ public class Main {
  	           break;
           }
           case 5: {
-        	  //To do exit
+        	  
   	          
 	           
 	           break;
@@ -137,12 +137,14 @@ public class Main {
           
        }
        
+       
        System.out.println("Do you want to continue? press 1 for Yes press 0 for No");
+      
 	   
 	   choice = sc.nextInt();
 	   }
 	   while(choice==1);
-
+	   System.out.println("Thanks! Have a nice day");
 	}
 
 }
