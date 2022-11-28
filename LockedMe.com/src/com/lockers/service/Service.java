@@ -22,6 +22,9 @@ public class Service {
 	public boolean addFile(String fileName,String fileLocation ,String fileData )
 	{
 		boolean status = false;
+		File file = new File(fileLocation);
+	      //Creating the directory
+	     file.mkdir();
 	
 		try {
 			FileWriter fw = new FileWriter(fileLocation+"/"+fileName+".txt");
